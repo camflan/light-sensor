@@ -13,15 +13,11 @@ function useAmbientLightSensor() {
             let sensor = new AmbientLightSensor()
             sensor.onreading = handleIlluminanceChange
 
-            sensor.onerror = event => {
+            sensor.onerror = (event) => {
                 throw new Error(event)
             }
 
             sensor.start()
-        } else {
-            throw new Error(
-                'This device does not support access to AmbientLightSensor.'
-            )
         }
 
         return function() {
