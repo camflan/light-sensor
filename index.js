@@ -9,8 +9,10 @@ function useAmbientLightSensor() {
     }
 
     useEffect(function() {
+        let sensor;
+        
         if ('AmbientLightSensor' in window) {
-            let sensor = new AmbientLightSensor()
+            sensor = new AmbientLightSensor()
             sensor.onreading = handleIlluminanceChange
 
             sensor.onerror = (event) => {
@@ -21,7 +23,7 @@ function useAmbientLightSensor() {
         }
 
         return function() {
-            sensor.stop()
+            if (sensor) sensor.stop()
         }
     }, [])
 
