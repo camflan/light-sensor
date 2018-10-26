@@ -1,6 +1,6 @@
-# `@rehooks/...`
+# `@rehooks/light-sensor`
 
-> React hook for ...
+> React hook for subscribing to the readings of your device's AmbientLightSensor
 
 > **Note:** This is using the new [React Hooks API Proposal](https://reactjs.org/docs/hooks-intro.html)
 > which is subject to change until React 16.7 final.
@@ -10,17 +10,19 @@
 ## Install
 
 ```sh
-yarn add @rehooks/...
+yarn add @rehooks/light-sensor
 ```
 
 ## Usage
 
 ```js
-import use... from '@rehooks/...';
+import useAmbientLightSensor from '@rehooks/light-sensor';
 
 function MyComponent() {
-  let value = use...();
-  // value == ...
-  return <div/>;
+  let lux = useAmbientLightSensor();
+
+  if(lux == null) { return "Loading" }
+
+  return <div>{`You're device is reading ${lux} lux`}</div>;
 }
 ```
