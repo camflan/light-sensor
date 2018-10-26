@@ -1,5 +1,5 @@
 'use strict'
-let { useState } = require('react')
+let { useState, useEffect } = require('react')
 
 function useAmbientLightSensor() {
     let [illuminance, setIlluminance] = useState(null)
@@ -8,20 +8,26 @@ function useAmbientLightSensor() {
         setIlluminance(sensor.illuminance)
     }
 
-    if ('AmbientLightSensor' in window) {
-        const sensor = new AmbientLightSensor()
-        sensor.onreading = handleIlluminanceChange
+    useEffect(function() {
+        if ('AmbientLightSensor' in window) {
+            let sensor = new AmbientLightSensor()
+            sensor.onreading = handleIlluminanceChange
 
-        sensor.onerror = event => {
-            throw new Error(event)
+            sensor.onerror = event => {
+                throw new Error(event)
+            }
+
+            sensor.start()
+        } else {
+            throw new Error(
+                'This device does not support access to AmbientLightSensor.'
+            )
         }
 
-        sensor.start()
-    } else {
-        throw new Error(
-            'This device does not support access to AmbientLightSensor.'
-        )
-    }
+        return function() {
+            sensor.stop()
+        }
+    }, [])
 
     return illuminance
 }

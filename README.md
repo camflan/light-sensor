@@ -2,6 +2,8 @@
 
 > React hook for subscribing to the readings of your device's AmbientLightSensor
 
+**Note:** At the moment, browser support is thin and also requires use of [Feature-Policy headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy)
+
 > **Note:** This is using the new [React Hooks API Proposal](https://reactjs.org/docs/hooks-intro.html)
 > which is subject to change until React 16.7 final.
 >
