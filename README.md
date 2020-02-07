@@ -1,5 +1,7 @@
 # `@rehooks/light-sensor`
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/camflan/light-sensor.svg)](https://greenkeeper.io/)
+
 > React hook for subscribing to the readings of your device's AmbientLightSensor
 
 **Note:** At the moment, browser support is thin and also requires use of [Feature-Policy headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy)
